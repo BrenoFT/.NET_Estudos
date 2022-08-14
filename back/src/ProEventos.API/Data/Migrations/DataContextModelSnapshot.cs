@@ -24,7 +24,7 @@ namespace ProEventos.API.Data.Migrations
                     b.Property<string>("DataEvento")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ImagemURL")
+                    b.Property<string>("ImageURL")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Local")
