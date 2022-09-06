@@ -9,52 +9,60 @@
 
 	<div class="col-md-6">
 
-		<form class="p-1">
+		<form [formGroup]="form" class="p-1">
       <div class="pb-2 d-block d-md-none">
         <h3 class="border-bottom">Cadastro de Usuário</h3>
       </div>
-      <div class="form-row">
+      <div class="row">
         <div class="form-group col-sm-6">
           <label>Primeiro Nome</label>
-          <input type="text" class="form-control" placeholder="Insira o Primeiro nome" />
+          <input type="text" class="form-control is-invalid" [ngClass]="{'is-invalid': f.primeiroNome.errors && f.primeiroNome.touched}"
+          formControlName="primeiroNome" placeholder="Insira o Primeiro nome" />
+          <div class="invalid-feedback">
+            campo obrigatório
+          </div>
         </div>
         <div class="form-group col-sm-6">
           <label>Último nome</label>
-          <input type="text" class="form-control" placeholder="Insira o Último nome" />
+          <input type="text" class="form-control is-invalid" formControlName="ultimoNome" [ngClass]="{'is-invalid': f.ultimoNome.errors && f.ultimoNome.touched}" placeholder="Insira o Último nome" />
         </div>
       </div>
       <div class="form-group">
         <label for="">Email:</label>
-        <input class="form-control" type="text" placeholder="Insira o Nome Completo" />
+        <input class="form-control is-invalid" formControlName="email" [ngClass]="{'is-invalid': f.email.errors && f.email.touched}"
+        type="text" placeholder="Insira o Nome Completo" />
       </div>
       <div class="form-group">
         <label for="">Usuario:</label>
-        <input class="form-control" type="text" placeholder="Insira o nome de Usuário" />
+        <input class="form-control is-invalid" [ngClass]="{'is-invalid': f.userName.errors && f.userName.touched}"
+        formControlName="userName" type="text" placeholder="Insira o nome de Usuário" />
       </div>
-      <div class="form-row">
+      <div class="row">
         <div class="form-group col-sm-6">
           <label for="">Senha:</label>
-          <input class="form-control" type="password" placeholder="Digite uma Senha" />
+          <input class="form-control is-invalid" [ngClass]="{'is-invalid': f.senha.errors && f.senha.touched}"
+           formControlName="senha" type="password" placeholder="Digite uma Senha" />
         </div>
         <div class="form-group col-sm-6">
           <label for="">Confirmar Senha:</label>
-          <input class="form-control" type="password" placeholder="Confirme a Senha" />
+          <input class="form-control is-invalid" [ngClass]="{'is-invalid': f.confirmarSenha.errors && f.confirmarSenha.touched}"
+           formControlName="confirmarSenha" type="password" placeholder="Confirme a Senha" />
         </div>
       </div>
-      <div class="form-row p-1 mb-3">
+      <div class="row p-1 mb-3">
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="customCheck1">
           <label class="custom-control-label">Eu concordo com os <a href="#">Termos de Uso</a>.</label>
         </div>
       </div>
-      <div class="form-row">
+      <div class="row">
         <div class="form-group col-12">
-          <button class="btn btn-lg btn-success btn-block px-5">
+          <button class="btn btn-lg btn-success btn-block px-5" [disabled]="form.invalid">
             Registar
           </button>
         </div>
       </div>
-      <div class="form-row">
+      <div class="row">
         <div class="form-group col-12">
           <a class="btn btn-link btn-block" routerLink="/user/login">
             Já sou Cadastrado

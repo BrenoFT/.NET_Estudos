@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -46,7 +46,8 @@ import { RegistrationComponent } from './components/user/registration/registrati
     EventoListaComponent,
     UserComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+
    ],
   imports: [
     BrowserModule,
@@ -64,6 +65,7 @@ import { RegistrationComponent } from './components/user/registration/registrati
       preventDuplicates: true,
       progressBar: true
     }),
+    ReactiveFormsModule,
     NgxSpinnerModule
 
   ],

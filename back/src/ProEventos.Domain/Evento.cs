@@ -17,7 +17,7 @@ namespace ProEventos.Domain
 
         public int QtdPessoas { get; set; }
 
-        public string ImageURL { get; set; }
+        public string ImagemURL { get; set; }
 
         public string Telefone { get; set; }
 
