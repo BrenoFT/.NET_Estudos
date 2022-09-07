@@ -1,6 +1,6 @@
 <app-titulo [titulo]="'Perfil'"></app-titulo>
 <div class="card rounded shadow-sm">
-<form>
+<form [formGroup]="form">
 	<div class="row p-3">
 		<div class="col-lg-3 pt-1">
 			<div class="card mb-3">
@@ -44,7 +44,9 @@
 				</div>
 				<div class="form-group col">
 					<label>Título</label>
-					<select class="form-control">
+					<select class="form-control is-invalid"
+          [ngClass]="{'is-invalid': f.titulo.errors && f.titulo.touched}"
+          formControlName="titulo">
 						<option value=""></option>
 						<option value="0">Não Quero</option>
 						<option value="Senhorita">Tecnólogo(a)</option>
@@ -58,35 +60,65 @@
 				</div>
 				<div class="form-group col-sm-5">
 					<label>Primeiro Nome</label>
-					<input type="text" class="form-control"/>
+					<input type="text" class="form-control is-invalid"
+          [ngClass]="{'is-invalid': f.primeiroNome.errors && f.primeiroNome.touched}"
+          formControlName="primeiroNome"/>
+          <div class="invalid-feedback">
+            campo obrigatório
+          </div>
 
 				</div>
 				<div class="form-group col-sm-5">
 					<label>Último nome</label>
-					<input type="text" class="form-control"/>
+					<input type="text" class="form-control is-invalid"
+          [ngClass]="{'is-invalid': f.ultimoNome.errors && f.ultimoNome.touched}"
+          formControlName="ultimoNome"/>
+          <div class="invalid-feedback">
+            campo obrigatório
+          </div>
 
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-sm-5">
 					<label>E-mail</label>
-					<input type="text" class="form-control" />
+					<input type="text" class="form-control is-invalid"
+          [ngClass]="{'is-invalid': f.email.errors && f.email.touched}"
+          formControlName="email" />
+          <div class="invalid-feedback">
+            campo obrigatório
+          </div>
 				</div>
 				<div class="form-group col-sm-4">
 					<label>Telefone</label>
-					<input type="text" class="form-control" />
+					<input type="text" class="form-control is-invalid"
+          [ngClass]="{'is-invalid': f.telefone.errors && f.telefone.touched}"
+          formControlName="telefone"/>
+          <div class="invalid-feedback">
+            campo obrigatório
+          </div>
 				</div>
 				<div class="form-group col-sm">
 					<label>Função</label>
-					<select class="form-control">
+					<select class="form-control is-invalid"
+          [ngClass]="{'is-invalid': f.funcao.errors && f.funcao.touched}"
+          formControlName="funcao">
 						<option value=""></option>
 						<option value="Participante">Participante</option>
 						<option value="Palestrante">Palestrante</option>
 					</select>
+          <div class="invalid-feedback">
+            campo obrigatório
+          </div>
 				</div>
 				<form-group class="col-12">
 					<label>Descrição</label>
-					<input type="text" class="form-control" />
+					<input type="text" class="form-control is-invalid"
+          [ngClass]="{'is-invalid': f.descricao.errors && f.descricao.touched}"
+          formControlName="descricao"/>
+          <div class="invalid-feedback">
+            campo obrigatório
+          </div>
 				</form-group>
 			</div>
 			<div>
@@ -96,11 +128,21 @@
 			<div class="row">
 				<div class="form-group col-sm">
 					<label>Senha</label>
-					<input type="password" class="form-control" />
+					<input type="password" class="form-control is-invalid"
+          [ngClass]="{'is-invalid': f.senha.errors && f.senha.touched}"
+          formControlName="senha"/>
+          <div class="invalid-feedback">
+            campo obrigatório
+          </div>
 				</div>
 				<div class="form-group col-sm">
 					<label>Confirmar Senha</label>
-					<input type="password" class="form-control" />
+					<input type="password" class="form-control is-invalid"
+          [ngClass]="{'is-invalid': f.confirmarSenha.errors && f.confirmarSenha.touched}"
+          formControlName="confirmarSenha" />
+          <div class="invalid-feedback">
+            campo obrigatório
+          </div>
 				</div>
 			</div>
 		</div>
@@ -110,7 +152,7 @@
 			<button class="btn btn-outline-secondary mr-auto border">
 				Cancelar Alteração
 			</button>
-			<button class="btn btn-success" style="float: right;">
+			<button class="btn btn-success" style="float: right;" [disabled]="form.invalid">
 				Salvar Alteração
 			</button>
 		</div>

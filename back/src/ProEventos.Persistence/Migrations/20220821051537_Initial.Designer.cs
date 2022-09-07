@@ -91,7 +91,7 @@ namespace ProEventos.Persistence.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ImagemURL")
+                    b.Property<string>("ImageURL")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("MiniCurriculo")

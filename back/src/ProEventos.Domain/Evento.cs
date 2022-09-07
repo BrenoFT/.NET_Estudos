@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace ProEventos.Domain
 
         public int QtdPessoas { get; set; }
 
-        public string ImagemURL { get; set; }
+        public string ImageURL { get; set; }
 
         public string Telefone { get; set; }
 

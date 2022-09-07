@@ -4,7 +4,7 @@ export interface Palestrante {
   id: number;
   nome: string;
   miniCurriculo: string;
-  imagemURL: string;
+  imageURL: string;
   telefone: string;
   email: string;
   redesSociais: RedeSocial[];

@@ -29,7 +29,7 @@ export class EventoDetalheComponent implements OnInit {
       qtdPessoas: ['', [Validators.required, Validators.maxLength(120000)]],
       telefone: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
       email: ['', [Validators.required, Validators.email]],
-      imageURL: ['', Validators.required],
+      imagemURL: ['', Validators.required],
     });
   }
 
