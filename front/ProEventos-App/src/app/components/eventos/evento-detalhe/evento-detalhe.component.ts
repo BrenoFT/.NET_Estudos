@@ -17,6 +17,8 @@ import { LoteService } from './../../../services/lote.service';
 import { EventoService } from '@app/services/evento.service';
 import { Evento } from '@app/models/Evento';
 import { Lote } from '@app/models/Lote';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -32,7 +34,7 @@ export class EventoDetalheComponent implements OnInit {
   eventoId: number;
   estadoSalvar = 'post';
   loteAtual = { id: 0, nome: '', indice: 0 };
-  imageURL = 'assets/img/upload.png';
+  imageURL = 'assets/upload.png';
   file: File;
 
   get modoEditar(): boolean {
@@ -82,6 +84,9 @@ export class EventoDetalheComponent implements OnInit {
           (evento: Evento) => {
             this.evento = {... evento};
             this.form.patchValue(this.evento);
+            //if(this.evento.imageURL != '') {
+              //this.imageURL = environment.apiURL + 'resources/images/' + this.evento.imageURL;
+           // }
             this.evento.lotes.forEach((lote) => {
               this.lotes.push(this.criarLote(lote))
             });
@@ -213,5 +218,30 @@ export class EventoDetalheComponent implements OnInit {
   declineDeleteLote(): void{
 
   }
+
+  onFileChange(ev: any): void {
+    const reader = new FileReader();
+
+    reader.onload = (event: any) => this.imageURL = event.target.result;
+
+    this.file = ev.target.files;
+    reader.readAsDataURL(this.file[0]);
+
+    this.uploadImagem();
+  }
+
+  uploadImagem(): void {
+    this.spinner.show();
+    this.eventoService.postUpload(this.eventoId, this.file).subscribe(
+      () => {
+        this.carregarEvento();
+        this.toastr.success('Imagem atualizada com Sucesso', 'Sucesso!');
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    ).add(() => this.spinner.hide());
+  }
+
 
 }
